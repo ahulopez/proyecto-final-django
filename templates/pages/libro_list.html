@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Libros{% endblock %}
+{% block content %}
+<div class="py-2 d-flex justify-content-between align-items-center">
+  <h1 class="mb-0">Libros</h1>
+  {% if user.is_authenticated %}<a class="btn btn成功 btn-success" href="{% url 'pages:libro_create' %}">Cargar Libro</a>{% endif %}
+</div>
+<form method="get" class="my-3">
+  <div class="input-group">
+    <input class="form-control" name="q" placeholder="Buscar libros..." value="{{ request.GET.q }}">
+    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+  </div>
+</form>
+{% if libros %}
+<div class="row g-3">
+  {% for l in libros %}
+    <div class="col-md-6">
+      <div class="card" style="border-radius:12px;">
+        {% if l.portada %}<img src="{{ l.portada.url }}" class="card-img-top" style="height:200px; object-fit:cover;">{% endif %}
+        <div class="card-body" style="background:#fff8f0;">
+          <h5 class="card-title">{{ l.titulo }}</h5>
+          <p class="card-text text-muted">{{ l.autor }} ({{ l.anio }})</p>
+          <a class="btn btn-primary" href="{% url 'pages:libro_detail' l.pk %}">Ver</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% else %}
+  <p>No hay libros aún.</p>
+{% endif %}
+{% endblock %}

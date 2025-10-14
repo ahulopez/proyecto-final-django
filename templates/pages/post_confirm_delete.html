@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Post{% endblock %}
+{% block content %}
+<h1>Confirmar eliminación</h1>
+<p>¿Eliminar "{{ object.title }}"?</p>
+<form method="post">{% csrf_token %}
+  <button class="btn btn-danger" type="submit">Eliminar</button>
+  <a class="btn btn-secondary" href="{% url 'pages:post_list' %}">Cancelar</a>
+</form>
+{% endblock %}

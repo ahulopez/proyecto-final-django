@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3" style="background:#fff8f0 !important">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Bienvenido</h1>
+    <p class="col-md-8 fs-5">App estilo blog con Django: autenticación, perfiles, CRUD de Posts y Libros, búsqueda y diseño en Bootstrap.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'pages:post_list' %}">Ver Posts</a>
+  </div>
+</div>
+{% endblock %}

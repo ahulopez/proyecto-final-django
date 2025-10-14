@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <div class="card" style="background:#fff8f0;">
+      <img src="{% static 'img/profile_placeholder.png' %}" class="card-img-top" alt="Avatar">
+      <div class="card-body">
+        <h5 class="card-title">Agustín López</h5>
+        <p class="card-text">Desarrollador web en formación. Me enfoco en Django y Python.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h2>Sobre este proyecto</h2>
+    <p>Este proyecto incluye herencia de templates, CRUDs completos, buscadores, autenticación y perfiles.</p>
+    <ul>
+      <li>🧱 Herencia de templates</li>
+      <li>🧩 Login / Registro / Perfiles</li>
+      <li>🗃️ CRUD completo para Posts y Libros</li>
+      <li>🎨 Diseño limpio y responsive</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

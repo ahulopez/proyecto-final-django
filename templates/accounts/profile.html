@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}  
+{% block title %}Perfil{% endblock %}
+{% block content %}
+<h1>Perfil</h1>
+<div class="row">
+  <div class="col-md-4">
+    {% if profile.avatar %}
+      <img src="{{ profile.avatar.url }}" class="img-fluid rounded">
+    {% else %}
+      <img src="{% static 'img/profile_placeholder.png' %}" class="img-fluid rounded">
+    {% endif %}
+  </div>
+  <div class="col-md-8">
+    <p><strong>Usuario:</strong> {{ request.user.username }}</p>
+    <p><strong>Nombre:</strong> {{ profile.first_name }} {{ profile.last_name }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Bio:</strong> {{ profile.bio }}</p>
+    <p><strong>Nacimiento:</strong> {{ profile.birth_date }}</p>
+    <a class="btn btn-outline-primary" href="{% url 'accounts:profile_edit' %}">Editar perfil</a>
+    <a class="btn btn-outline-secondary" href="{% url 'accounts:password_change' %}">Cambiar contraseña</a>
+  </div>
+</div>
+{% endblock %}

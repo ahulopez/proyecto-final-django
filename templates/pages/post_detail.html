@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<div class="card" style="background:#fff8f0;">
+  <div class="card-body">
+    <h1>{{ post.title }}</h1>
+    <h4 class="text-muted">{{ post.subtitle }}</h4>
+    {% if post.image %}<img src="{{ post.image.url }}" class="img-fluid my-3">{% endif %}
+    <div>{{ post.content|safe }}</div>
+    <p class="text-muted mt-3">Publicado: {{ post.created_at }} | Autor: {{ post.author.username }}</p>
+    {% if user.is_authenticated and user == post.author %}
+      <a href="{% url 'pages:post_update' post.pk %}" class="btn btn-outline-secondary">Editar</a>
+      <a href="{% url 'pages:post_delete' post.pk %}" class="btn btn-danger">Eliminar</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
