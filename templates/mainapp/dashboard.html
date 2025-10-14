@@ -1,6 +1,33 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
+
 {% block content %}
-  <h1>Dashboard (protegido)</h1>
-  <p>Solo usuarios logueados pueden ver esto (decorador @login_required).</p>
+<div class="container mt-5">
+  <div class="text-center">
+    <h1 class="mb-4">Bienvenido, {{ request.user.username }} 👋</h1>
+    <p class="lead">Este es tu panel personal. Desde aquí puedes gestionar tu cuenta y tus publicaciones.</p>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">👤 Perfil</h5>
+          <p class="card-text">Edita tu información personal o cambia tu contraseña.</p>
+          <a href="{% url 'accounts:profile_edit' %}" class="btn btn-outline-primary">Editar perfil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">📚 Publicaciones</h5>
+          <p class="card-text">Crea, edita o elimina tus posts y libros.</p>
+          <a href="{% url 'pages:post_list' %}" class="btn btn-outline-success">Ver publicaciones</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
